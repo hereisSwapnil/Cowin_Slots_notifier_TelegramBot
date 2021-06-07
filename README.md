@@ -23,16 +23,18 @@ id1 = ID_OF_OWNER
 qq = TELEGRAM_GROUP_ID
 DISTRICT_CODE = CODE_OF YOUR DISTRICT
 ```
-<br/>
-**Get District Code**
+**Get State Code**
 ```javascript
 https://cdn-api.co-vin.in/api/v2/admin/location/states
 ```
 <br/>
+
+**Get District Code**
 ```javascript
 https://cdn-api.co-vin.in/api/v2/admin/location/districts/{State_id}
 ```
 <br/>
+
 **RUN**
 ```javascript
 python notify.py
