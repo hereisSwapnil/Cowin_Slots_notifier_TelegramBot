@@ -1,5 +1,6 @@
 # Cowin_Slots_notifier_TelegramBot
-This Telegram bot looks for available slots in the preferred district and send you a message on configured Telegram group.<br/>
+This Telegram bot looks for available slots in the preferred district and send you a message on configured Telegram group.
+Running on an Indian Server is must.<br/>
 <br/>
 **Update config.py and secrets.json file**<br/>
 ```javascript
@@ -20,7 +21,18 @@ cred = credentials.Certificate("PATH_TO_FIRESTORE_CREDENTIALS")
 token = "TELEGRAM_BOT_TOKEN"
 id1 = ID_OF_OWNER
 qq = TELEGRAM_GROUP_ID
+DISTRICT_CODE = CODE_OF YOUR DISTRICT
 ```
+<br/>
+**Get District Code**
+```javascript
+https://cdn-api.co-vin.in/api/v2/admin/location/states
+```
+<br/>
+```javascript
+https://cdn-api.co-vin.in/api/v2/admin/location/districts/{State_id}
+```
+<br/>
 **RUN**
 ```javascript
 python notify.py
