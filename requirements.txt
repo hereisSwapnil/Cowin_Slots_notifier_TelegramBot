@@ -1,0 +1,5 @@
+firebase_admin==5.0.0
+requests==2.25.1
+jsons==1.4.2
+schedule==1.1.0
+pyTelegramBotAPI==3.7.9
