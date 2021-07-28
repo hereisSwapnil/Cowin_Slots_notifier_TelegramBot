@@ -202,7 +202,7 @@ def send_45_one():
 						personal_notify(i[4] , i[3] , i[0], i[5])
 
 			except:
-				if i[2]>min_num:
+				if i[2]>minimum_doses_above_45:
 					doc = db.collection("45plus").document(str(i[1]) +i[4] + str(i[3]))
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_45PLUS_group:
@@ -216,7 +216,7 @@ def send_45_two():
 		t45_dating(this)
 		for i in t45_text:
 			try:
-				if (i[2] > min_num):
+				if (i[2] > minimum_doses_above_45):
 					doc = db.collection("45plus").document(str(i[1]) + i[4] +str(i[3]))
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
@@ -233,7 +233,7 @@ def send_45_two():
 						personal_notify(i[4] , i[3] , i[0], i[5])
 
 			except:
-				if i[2]>min_num:
+				if i[2]>minimum_doses_above_45:
 					doc = db.collection("45plus").document(str(i[1]) + i[4] +str(i[3]))
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_45PLUS_group:
