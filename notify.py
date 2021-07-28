@@ -36,7 +36,7 @@ PERSONAL_RUN = True
 def personal_notify(vaccine , date , text , age):
 	if vaccine == PERSONAL_SEND_VACCINE and date in PERSONAL_SEND_DATE and age == PERSONAL_SEND_AGE:
 		for i in Personal_Notify_Ids:
-			bot.send_message( i , text ,parse_mode ="Markdown")
+			bot.send_message( i , text ,parse_mode ="Markdown",reply_markup = markup)
 
 # /////////////////////////////////////////////////////
 
