@@ -1,4 +1,5 @@
 import os
+from firebase_admin import credentials
 cred = credentials.Certificate("secret")
 token = os.getenv("TELEGRAM_BOT_TOKEN")
 Group_Owner = os.getenv('group_owner')
