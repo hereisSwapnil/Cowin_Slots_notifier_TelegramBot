@@ -1,10 +1,5 @@
 import os
 from firebase_admin import credentials
-cred = credentials.Certificate(secret)
-token = os.getenv("TELEGRAM_BOT_TOKEN")
-Group_Owner = os.getenv('group_owner')
-Telegram_Groupid = os.getenv('telegram_groupid')
-DISTRICT_CODE = os.getenv('district_code')
 
 secret = {
   "type": os.getenv('type'),
@@ -18,3 +13,10 @@ secret = {
   "auth_provider_x509_cert_url": os.getenv('as1'),
   "client_x509_cert_url": os.getenv('as2')
 }
+
+cred = credentials.Certificate(secret)
+token = os.getenv("TELEGRAM_BOT_TOKEN")
+Group_Owner = os.getenv('group_owner')
+Telegram_Groupid = os.getenv('telegram_groupid')
+DISTRICT_CODE = os.getenv('district_code')
+
