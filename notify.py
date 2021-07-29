@@ -29,7 +29,7 @@ PERSONAL_SEND_DATE = ["dd/mm/yyyy"]
 
 PERSONAL_SEND_VACCINE = "COVAXIN/COVISHIELD"
 
-PERSONAL_RUN = True
+PERSONAL_RUN = False
 
 # ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -41,7 +41,7 @@ def personal_notify(vaccine , date , text , age):
 # /////////////////////////////////////////////////////
 
 SEND_18PLUS_group = True
-SEND_45PLUS_group = True
+SEND_45PLUS_group = False
 
 def text_18_one(this):
 	global t18_text
