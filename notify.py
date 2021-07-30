@@ -6,7 +6,7 @@ from settings import app_secrets
 import request
 
 # /////////////////////////////////////////////////////
-
+cred = credentials.Certificate(app_secrets.secret)
 firebase_admin.initialize_app(app_secrets.cred)
 db = firestore.client()
 bot = telebot.TeleBot(token = app_secrets.token)
