@@ -154,7 +154,7 @@ def send_18_one():
 
 def send_18_two():
 	for this in range(number_of_days_check_18):
-		send_18_two(this)
+		text_18_two(this)
 		for i in t18_text:
 			try:
 				if (i[2] > minimum_doses_under_18):
@@ -184,7 +184,7 @@ def send_18_two():
 
 def send_45_one():
 	for this in range(number_of_days_check_45):
-		send_45_one(this)
+		text_45_one(this)
 		for i in t45_text:
 			try:
 				if (i[2] > minimum_doses_above_45):
@@ -214,7 +214,7 @@ def send_45_one():
 
 def send_45_two():
 	for this in range(number_of_days_check_45):
-		t45_dating(this)
+		text_45_two(this)
 		for i in t45_text:
 			try:
 				if (i[2] > minimum_doses_above_45):
