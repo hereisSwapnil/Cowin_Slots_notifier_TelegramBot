@@ -1,22 +1,21 @@
 import os
-from firebase_admin import credentials
 
 secret = {
-  "type": os.getenv('type'),
-  "project_id": os.getenv('project_id'),
-  "private_key_id": os.getenv('private_key_id'),
-  "private_key": os.getenv('private_key'),
-  "client_email": os.getenv('client_email'),
-  "client_id": os.getenv('client_id'),
-  "auth_uri": os.getenv('auth_uri'),
-  "token_uri": os.getenv('token_uri'),
-  "auth_provider_x509_cert_url": os.getenv('as1'),
-  "client_x509_cert_url": os.getenv('as2')
+  "type": os.environ('type'),
+  "project_id": os.environ('project_id'),
+  "private_key_id": os.environ('private_key_id'),
+  "private_key": os.environ('private_key'),
+  "client_email": os.environ('client_email'),
+  "client_id": os.environ('client_id'),
+  "auth_uri": os.environ('auth_uri'),
+  "token_uri": os.environ('token_uri'),
+  "auth_provider_x509_cert_url": os.environ('as1'),
+  "client_x509_cert_url": os.environ('as2')
 }
 
-cred = credentials.Certificate(secret)
-token = os.getenv("TELEGRAM_BOT_TOKEN")
-Group_Owner = os.getenv('group_owner')
-Telegram_Groupid = os.getenv('telegram_groupid')
-DISTRICT_CODE = os.getenv('district_code')
+
+token = os.environ("TELEGRAM_BOT_TOKEN")
+Group_Owner = os.environ('group_owner')
+Telegram_Groupid = os.environ('telegram_groupid')
+DISTRICT_CODE = os.environ('district_code')
 

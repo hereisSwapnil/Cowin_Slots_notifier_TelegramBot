@@ -7,7 +7,8 @@ import request
 
 # /////////////////////////////////////////////////////
 
-firebase_admin.initialize_app(app_secrets.cred)
+cred = credentials.Certificate(app_secrets.secret)
+firebase_admin.initialize_app(cred)
 db = firestore.client()
 bot = telebot.TeleBot(token = app_secrets.token)
 
