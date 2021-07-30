@@ -1,5 +1,5 @@
 import os
-
+from firebase_admin import credentials
 
 secret = {
   "type": os.getenv('type'),
@@ -14,6 +14,7 @@ secret = {
   "client_x509_cert_url": os.getenv('as2')
 }
 
+cred = credentials.Certificate(secret)
 token = os.getenv("TELEGRAM_BOT_TOKEN")
 Group_Owner = os.getenv('group_owner')
 Telegram_Groupid = os.getenv('telegram_groupid')
