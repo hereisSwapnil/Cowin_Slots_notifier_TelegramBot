@@ -4,6 +4,7 @@ from firebase_admin import credentials , firestore
 from telebot import types
 from settings import app_secrets
 import request
+import os
 
 # /////////////////////////////////////////////////////
 
@@ -117,7 +118,7 @@ def text_45_two(this):
 
 # /////////////////////////////////////////////////////
 
-minimum_doses_under_18 = 40
+minimum_doses_under_18 = os.environ.get('under18')
 minimum_doses_above_45 = 30
 number_of_days_check_18 = 4
 number_of_days_check_45 = 4
