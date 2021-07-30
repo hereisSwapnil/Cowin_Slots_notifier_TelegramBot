@@ -49,7 +49,7 @@ def text_18_one(this):
 	data_18 = []
 	request.request_one(request.get_date(this))
 	t18_text = []
-	for i in list_sessions:
+	for i in request.list_sessions:
 			if i[5] == 18:
 				l = []
 				text = f'Centre : *{i[0]}*\nAddress : {i[1]}\nPincode : *{i[9]}*\nDate : *{i[3]}*\n*Dose1* : {i[6]}\n*Dose2* : {i[7]}\nFee : *{i[2]}*\nMinAge : *{i[5]}*\nVaccine : *{i[4]}*'
@@ -67,7 +67,7 @@ def text_18_two(this):
 	data_18 = []
 	request.request_two(request.get_date(this))
 	t18_text = []
-	for i in list_sessions:
+	for i in request.list_sessions:
 			if i[5] == 18:
 				l = []
 				text = f'Centre : *{i[0]}*\nAddress : {i[1]}\nPincode : *{i[9]}*\nDate : *{i[3]}*\n*Dose1* : {i[6]}\n*Dose2* : {i[7]}\nFee : *{i[2]}*\nMinAge : *{i[5]}*\nVaccine : *{i[4]}*'
@@ -85,7 +85,7 @@ def text_45_one(this):
 	data_45 = []
 	request.request_one(request.get_date(this))
 	t45_text = []
-	for i in list_sessions:
+	for i in request.list_sessions:
 			if i[5] == 45:
 				l = []
 				text = f'Centre : *{i[0]}*\nAddress : {i[1]}\nPincode : *{i[9]}*\nDate : *{i[3]}*\n*Dose1* : {i[6]}\n*Dose2* : {i[7]}\nFee : *{i[2]}*\nMinAge : *{i[5]}*\nVaccine : *{i[4]}*'
@@ -103,7 +103,7 @@ def text_45_two(this):
 	data_45 = []
 	request.request_two(request.get_date(this))
 	t45_text = []
-	for i in list_sessions:
+	for i in request.list_sessions:
 			if i[5] == 45:
 				l = []
 				text = f'Centre : *{i[0]}*\nAddress : {i[1]}\nPincode : *{i[9]}*\nDate : *{i[3]}*\n*Dose1* : {i[6]}\n*Dose2* : {i[7]}\nFee : *{i[2]}*\nMinAge : *{i[5]}*\nVaccine : *{i[4]}*'
