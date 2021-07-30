@@ -47,7 +47,7 @@ SEND_45PLUS_group = False
 def text_18_one(this):
 	global t18_text
 	data_18 = []
-	request.request_one(requests.get_date(this))
+	request.request_one(request.get_date(this))
 	t18_text = []
 	for i in list_sessions:
 			if i[5] == 18:
@@ -65,7 +65,7 @@ def text_18_one(this):
 def text_18_two(this):
 	global t18_text
 	data_18 = []
-	request.request_two(requests.get_date(this))
+	request.request_two(request.get_date(this))
 	t18_text = []
 	for i in list_sessions:
 			if i[5] == 18:
@@ -83,7 +83,7 @@ def text_18_two(this):
 def text_45_one(this):
 	global t45_text
 	data_45 = []
-	request.request_one(requests.get_date(this))
+	request.request_one(request.get_date(this))
 	t45_text = []
 	for i in list_sessions:
 			if i[5] == 45:
@@ -101,7 +101,7 @@ def text_45_one(this):
 def text_45_two(this):
 	global t45_text
 	data_45 = []
-	request.request_two(requests.get_date(this))
+	request.request_two(request.get_date(this))
 	t45_text = []
 	for i in list_sessions:
 			if i[5] == 45:
