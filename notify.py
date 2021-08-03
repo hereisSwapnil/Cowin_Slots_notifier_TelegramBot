@@ -247,7 +247,7 @@ def send_45_two():
 
 def RUN():
 	if (SEND_18PLUS_group) or (PERSONAL_RUN and PERSONAL_SEND_AGE == 18) :
-		send_18_one()
+		# send_18_one()
 		send_18_two()
 	if (SEND_45PLUS_group) or (PERSONAL_RUN and PERSONAL_SEND_AGE == 45) :
 		send_45_one()

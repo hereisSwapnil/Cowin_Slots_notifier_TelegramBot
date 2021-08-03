@@ -19,10 +19,10 @@ num = 0
 while True:
 	if isNowInTimePeriod(dt.time(22,30), dt.time(11,30), dt.datetime.now().time()):
 		try:
-			# notify.RUN()
+			notify.RUN()
 			print(num)
 			num+=1
-			time.sleep(20)
+			time.sleep(50)
 		except Exception as e:
 			if "Max retries exceeded with url:" not in str(e):
 				try:
