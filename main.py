@@ -4,10 +4,12 @@ import time
 
 notify.bot.send_message(app_secrets.Group_Owner , "Started...")
 print("Started...")
-
+num = 0
 while True:
 	try:
 		notify.RUN()
+		print(num)
+		num+=1
 		time.sleep(20)
 	except Exception as e:
 		if "Max retries exceeded with url:" not in str(e):
