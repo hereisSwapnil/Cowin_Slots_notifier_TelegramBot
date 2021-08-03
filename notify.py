@@ -139,7 +139,7 @@ def send_18_one():
 					doc.set(a)
 					if SEND_18PLUS_group:
 						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
-					print(i[0])
+					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0] , i[5])
 
@@ -149,7 +149,7 @@ def send_18_one():
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_18PLUS_group:
 						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
-					print(i[0])
+					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
 
@@ -169,7 +169,7 @@ def send_18_two():
 					doc.set(a)
 					if SEND_18PLUS_group:
 						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
-					print(i[0])
+					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
 
@@ -179,7 +179,7 @@ def send_18_two():
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_18PLUS_group:
 						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
-					print(i[0])
+					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
 
@@ -199,7 +199,7 @@ def send_45_one():
 					doc.set(a)
 					if SEND_45PLUS_group:
 						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
-					print(i[0])
+					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
 
@@ -209,7 +209,7 @@ def send_45_one():
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_45PLUS_group:
 						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
-					print(i[0])
+					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
 
@@ -224,13 +224,12 @@ def send_45_two():
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
 				if (c < i[2]) and (i[2] > min_num):
-					print("2")
 					b = {"total_dose": i[2]}
 					a.update(b)
 					doc.set(a)
 					if SEND_45PLUS_group:
 						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
-					print(i[0])
+					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
 
@@ -240,7 +239,7 @@ def send_45_two():
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_45PLUS_group:
 						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
-					print(i[0])
+					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
 
