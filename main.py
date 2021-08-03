@@ -19,9 +19,6 @@ num = 0
 while True:
 	if print(isNowInTimePeriod(dt.time(22,30), dt.time(11,30), dt.datetime.now().time())):
 		try:
-			curr_time = time.localtime()
-			curr_clock = time.strftime("%H:%M:%S", curr_time)
-			if curr_clock > "09:00:00"
 			notify.RUN()
 			print(num)
 			num+=1
