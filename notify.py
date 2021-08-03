@@ -244,7 +244,7 @@ def send_45_two():
 						personal_notify(i[4] , i[3] , i[0], i[5])
 
 # /////////////////////////////////////////////////////
-run_times = 0
+
 def RUN():
 	if (SEND_18PLUS_group) or (PERSONAL_RUN and PERSONAL_SEND_AGE == 18) :
 		send_18_one()
