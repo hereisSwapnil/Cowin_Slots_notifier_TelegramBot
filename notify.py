@@ -120,8 +120,8 @@ def text_45_two(this):
 
 minimum_doses_under_18 = int(os.environ.get('under18'))
 minimum_doses_above_45 = 30
-number_of_days_check_18 = 4
-number_of_days_check_45 = 4
+number_of_days_check_18 = int(os.environ.get('under18_days'))
+number_of_days_check_45 = 2
 
 def send_18_one():
 	for this in range(number_of_days_check_18):
