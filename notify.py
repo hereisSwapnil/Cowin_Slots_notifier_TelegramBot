@@ -133,7 +133,7 @@ def send_18_one():
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
-				if (c < i[2]) and (i[2] > minimum_doses_under_18):
+				if (c+10 < i[2]) and (i[2] > minimum_doses_under_18):
 					b = {"total_dose": i[2]}
 					a.update(b)
 					doc.set(a)
@@ -163,7 +163,7 @@ def send_18_two():
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
-				if (c < i[2]) and (i[2] > min_num):
+				if (c+10 < i[2]) and (i[2] > min_num):
 					b = {"total_dose": i[2]}
 					a.update(b)
 					doc.set(a)
