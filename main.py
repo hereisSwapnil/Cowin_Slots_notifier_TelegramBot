@@ -17,7 +17,7 @@ print("Started...")
 print(dt.datetime.now().time())
 num = 0
 while True:
-	if isNowInTimePeriod(dt.time(9,00), dt.time(22,00), dt.datetime.now().time()):
+	if isNowInTimePeriod(dt.time(9,00), dt.time(22,30), dt.datetime.now().time()):
 		try:
 			notify.RUN()
 			print(num)
