@@ -22,7 +22,7 @@ while True:
 			notify.RUN()
 			print(num)
 			num+=1
-			time.sleep(30)
+			time.sleep(os.environ.get('time'))
 		except Exception as e:
 			if "Max retries exceeded with url:" not in str(e):
 				try:

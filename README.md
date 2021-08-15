@@ -2,7 +2,7 @@
 This Telegram bot looks for available slots in the preferred district and send you a message on configured Telegram group.
 Running on an Indian Server is must.<br/>
 <br/>
-**Update app_secrets.py and secrets.json file**<br/>
+**Update app_secrets.py file**<br/>
 ```javascript
 {
   "type": "TYPE_OF_ACCOUNT",
