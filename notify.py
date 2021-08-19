@@ -43,7 +43,7 @@ def personal_notify(vaccine , date , text , age):
 # /////////////////////////////////////////////////////
 
 SEND_18PLUS_group = True
-SEND_45PLUS_group = False
+SEND_45PLUS_group = True
 
 def text_18_one(this):
 	global t18_text
@@ -119,9 +119,9 @@ def text_45_two(this):
 # /////////////////////////////////////////////////////
 
 minimum_doses_under_18 = int(os.environ.get('under18'))
-minimum_doses_above_45 = 30
+minimum_doses_above_45 = int(os.environ.get('under45'))
 number_of_days_check_18 = int(os.environ.get('under18_days'))
-number_of_days_check_45 = 2
+number_of_days_check_45 = int(os.environ.get('under45_days'))
 
 def send_18_one():
 	for this in range(number_of_days_check_18):
@@ -138,7 +138,7 @@ def send_18_one():
 					a.update(b)
 					doc.set(a)
 					if SEND_18PLUS_group:
-						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.send_message( app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
 					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0] , i[5])
@@ -148,7 +148,7 @@ def send_18_one():
 					doc = db.collection("18plus").document(str(i[1]) + i[4] +str(i[3]))
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_18PLUS_group:
-						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.send_message( app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
 					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
@@ -168,7 +168,7 @@ def send_18_two():
 					a.update(b)
 					doc.set(a)
 					if SEND_18PLUS_group:
-						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.send_message( app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
 					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
@@ -178,7 +178,7 @@ def send_18_two():
 					doc = db.collection("18plus").document(str(i[1]) +i[4] + str(i[3]))
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_18PLUS_group:
-						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.send_message( app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
 					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
@@ -198,7 +198,7 @@ def send_45_one():
 					a.update(b)
 					doc.set(a)
 					if SEND_45PLUS_group:
-						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.send_message( app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
 					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
@@ -208,7 +208,7 @@ def send_45_one():
 					doc = db.collection("45plus").document(str(i[1]) +i[4] + str(i[3]))
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_45PLUS_group:
-						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.send_message( app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
 					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
@@ -228,7 +228,7 @@ def send_45_two():
 					a.update(b)
 					doc.set(a)
 					if SEND_45PLUS_group:
-						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.send_message( app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
 					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
@@ -238,7 +238,7 @@ def send_45_two():
 					doc = db.collection("45plus").document(str(i[1]) + i[4] +str(i[3]))
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_45PLUS_group:
-						bot.send_message( app_secrets.Telegram_Groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.send_message( app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
 					# print(i[0])
 					if PERSONAL_RUN:
 						personal_notify(i[4] , i[3] , i[0], i[5])
