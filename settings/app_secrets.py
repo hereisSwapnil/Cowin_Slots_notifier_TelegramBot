@@ -17,6 +17,6 @@ secret = {
 token = os.environ.get("TELEGRAM_BOT_TOKEN")
 Group_Owner = os.environ.get('group_owner')
 _18plus_groupid = os.environ.get('telegram_groupid_18')
-_45plus_groupid = ('telegram_groupid_45')
+_45plus_groupid = os.environ.get('telegram_groupid_45')
 DISTRICT_CODE = os.environ.get('district_code')
 
