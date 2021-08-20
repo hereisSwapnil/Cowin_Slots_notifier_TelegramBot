@@ -28,7 +28,9 @@ def request_one(RequestDate):
 	for i in a:
 		if i["available_capacity"] >= 30:
 			lst = []
-			name = i["name"] 
+			name = i["name"]
+			if "/" in name :
+				name = name.replace("/" , "")
 			address = i["address"]
 			pincode = i["pincode"]
 			date_new = i["date"]
@@ -70,7 +72,9 @@ def request_two(RequestDate):
 	a = l["centers"]
 	list_sessions = []
 	for i in a:
-		name = i["name"] 
+		name = i["name"]
+		if "/" in name :
+				name = name.replace("/" , "")
 		address = i["address"]
 		pincode = i["pincode"]
 		fee_new = i["fee_type"]
