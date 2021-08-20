@@ -27,6 +27,10 @@ while True:
 		except Exception as e:
 			if "Max retries exceeded with url:" not in str(e):
 				try:
+					exception_type, exception_object, exception_traceback = sys.exc_info()
+    				filename = exception_traceback.tb_frame.f_code.co_filename
+    				line_number = exception_traceback.tb_lineno
+    				e = e + "\n"+"\n"+"Exception type: "+exception_type+"\n"+"File name: "+filename+"\n"+"Line number: "+line_number
 					notify.bot.send_message(app_secrets.Group_Owner , "Error!!!")
 					notify.bot.send_message(app_secrets.Group_Owner , e)
 				except:
