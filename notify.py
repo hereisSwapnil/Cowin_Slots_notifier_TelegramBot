@@ -94,6 +94,7 @@ def text_45_one(this):
 				else:
 					age = str(i[5])
 				text = f'Centre : *{i[0]}*\nAddress : {i[1]}\nPincode : *{i[9]}*\nDate : *{i[3]}*\n*Dose1* : {i[6]}\n*Dose2* : {i[7]}\nFee : *{i[2]}*\nMinAge : *{age}*\nVaccine : *{i[4]}*'
+				l.append(text)
 				l.append(i[0])
 				l.append(i[8])
 				l.append(i[3])
