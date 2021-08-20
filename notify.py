@@ -137,7 +137,8 @@ def send_18_one():
 		for i in t18_text:
 			try:
 				if (i[2] > minimum_doses_under_18):
-					doc = db.collection("18plus").document(str(i[1]) +i[4] + str(i[3]))
+					doc_name = str(i[1]) + str(i[4]) + str(i[3])
+					doc = db.collection("18plus").document(doc_name)
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
@@ -153,7 +154,8 @@ def send_18_one():
 
 			except:
 				if i[2]>minimum_doses_under_18:
-					doc = db.collection("18plus").document(str(i[1]) + i[4] +str(i[3]))
+					doc_name = str(i[1]) + str(i[4]) + str(i[3])
+					doc = db.collection("18plus").document(doc_name)
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_18PLUS_group:
 						bot.send_message( app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
@@ -167,7 +169,8 @@ def send_18_two():
 		for i in t18_text:
 			try:
 				if (i[2] > minimum_doses_under_18):
-					doc = db.collection("18plus").document(str(i[1]) +i[4] +str(i[3]))
+					doc_name = str(i[1]) + str(i[4]) + str(i[3])
+					doc = db.collection("18plus").document(doc_name)
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
@@ -183,7 +186,8 @@ def send_18_two():
 
 			except:
 				if i[2]>minimum_doses_under_18:
-					doc = db.collection("18plus").document(str(i[1]) +i[4] + str(i[3]))
+					doc_name = str(i[1]) + str(i[4]) + str(i[3])
+					doc = db.collection("18plus").document(doc_name)
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_18PLUS_group:
 						bot.send_message( app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
@@ -197,7 +201,8 @@ def send_45_one():
 		for i in t45_text:
 			try:
 				if (i[2] > minimum_doses_above_45):
-					doc = db.collection("45plus").document(str(i[1]) + i[4] +str(i[3]))
+					doc_name = str(i[1]) + str(i[4]) + str(i[3])
+					doc = db.collection("45plus").document(doc_name)
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
@@ -213,7 +218,8 @@ def send_45_one():
 
 			except:
 				if i[2]>minimum_doses_above_45:
-					doc = db.collection("45plus").document(str(i[1]) +i[4] + str(i[3]))
+					doc_name = str(i[1]) + str(i[4]) + str(i[3])
+					doc = db.collection("45plus").document(doc_name)
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_45PLUS_group:
 						bot.send_message( app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
@@ -227,7 +233,8 @@ def send_45_two():
 		for i in t45_text:
 			try:
 				if (i[2] > minimum_doses_above_45):
-					doc = db.collection("45plus").document(str(i[1]) + i[4] +str(i[3]))
+					doc_name = str(i[1]) + str(i[4]) + str(i[3])
+					doc = db.collection("45plus").document(doc_name)
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
@@ -243,7 +250,8 @@ def send_45_two():
 
 			except:
 				if i[2]>minimum_doses_above_45:
-					doc = db.collection("45plus").document(str(i[1]) + i[4] +str(i[3]))
+					doc_name = str(i[1]) + str(i[4]) + str(i[3])
+					doc = db.collection("45plus").document(doc_name)
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_45PLUS_group:
 						bot.send_message( app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
