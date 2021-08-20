@@ -87,15 +87,16 @@ def text_45_one(this):
 	request.request_one(request.get_date(this))
 	t45_text = []
 	for i in request.list_sessions:
-			if i[5] == 45:
+			if (i[5] == 45) or (i[5] == 18 and i[10] == True):
 				l = []
 				text = f'Centre : *{i[0]}*\nAddress : {i[1]}\nPincode : *{i[9]}*\nDate : *{i[3]}*\n*Dose1* : {i[6]}\n*Dose2* : {i[7]}\nFee : *{i[2]}*\nMinAge : *{i[5]}*\nVaccine : *{i[4]}*'
+				age = str(i[5]) + " (All Ages)"
 				l.append(text)
 				l.append(i[0])
 				l.append(i[8])
 				l.append(i[3])
 				l.append(i[4])
-				l.append(i[5])
+				l.append(age)
 				t45_text.append(l)
 
 
@@ -105,15 +106,16 @@ def text_45_two(this):
 	request.request_two(request.get_date(this))
 	t45_text = []
 	for i in request.list_sessions:
-			if i[5] == 45:
+			if (i[5] == 45) or (i[5] == 18 and i[10] == True):
 				l = []
 				text = f'Centre : *{i[0]}*\nAddress : {i[1]}\nPincode : *{i[9]}*\nDate : *{i[3]}*\n*Dose1* : {i[6]}\n*Dose2* : {i[7]}\nFee : *{i[2]}*\nMinAge : *{i[5]}*\nVaccine : *{i[4]}*'
+				age = str(i[5]) + " (All Ages)"
 				l.append(text)
 				l.append(i[0])
 				l.append(i[8])
 				l.append(i[3])
 				l.append(i[4])
-				l.append(i[5])
+				l.append(age)
 				t45_text.append(l)
 
 # /////////////////////////////////////////////////////

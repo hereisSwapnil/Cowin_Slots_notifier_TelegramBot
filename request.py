@@ -32,6 +32,7 @@ def request_one(RequestDate):
 			address = i["address"]
 			pincode = i["pincode"]
 			date_new = i["date"]
+			allow_all_age = i["allow_all_age"]
 			fee_new = i["fee_type"]
 			fee = i["fee"]
 			if fee_new == "Paid":
@@ -51,6 +52,7 @@ def request_one(RequestDate):
 			lst.append(dose2)
 			lst.append(tot_dose)
 			lst.append(pincode)
+			lst.append(allow_all_age)
 			if tot_dose != 0:
 				list_sessions.append(lst)
 
@@ -84,6 +86,7 @@ def request_two(RequestDate):
 			datet = z["date"]
 			vaccine = z["vaccine"]
 			age = z["min_age_limit"]
+			allow_all_age = False
 			dose1 = z["available_capacity_dose1"]
 			does2 = z["available_capacity_dose2"]
 			bg_list.append(name)
@@ -96,6 +99,7 @@ def request_two(RequestDate):
 			bg_list.append(does2)
 			bg_list.append(z["available_capacity"])
 			bg_list.append(pincode)
+			bglist.append(allow_all_age)
 			list_sessions.append(bg_list)
 
 
