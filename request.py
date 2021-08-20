@@ -99,7 +99,7 @@ def request_two(RequestDate):
 			bg_list.append(does2)
 			bg_list.append(z["available_capacity"])
 			bg_list.append(pincode)
-			bglist.append(allow_all_age)
+			bg_list.append(allow_all_age)
 			list_sessions.append(bg_list)
 
 
