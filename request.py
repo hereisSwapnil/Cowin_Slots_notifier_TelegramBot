@@ -26,7 +26,7 @@ def request_one(RequestDate):
 	a = l["sessions"]
 	list_sessions = []
 	for i in a:
-		if i["available_capacity"] >= 30:
+		if i["available_capacity"] >= 0:
 			lst = []
 			name = i["name"] 
 			address = i["address"]
@@ -81,12 +81,12 @@ def request_two(RequestDate):
 			fee_new = fee_new+" ( "+fee+" )"
 		b = i["sessions"]
 		z = b[0]
-		if z["available_capacity"] >= 30 :
+		if z["available_capacity"] >= 0 :
 			bg_list = []
 			datet = z["date"]
 			vaccine = z["vaccine"]
 			age = z["min_age_limit"]
-			allow_all_age = False
+			allow_all_age = z["allow_all_age"]
 			dose1 = z["available_capacity_dose1"]
 			does2 = z["available_capacity_dose2"]
 			bg_list.append(name)
