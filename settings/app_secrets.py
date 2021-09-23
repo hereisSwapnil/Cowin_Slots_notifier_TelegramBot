@@ -1,15 +1,22 @@
 #It will be used for reading secret vars from the os
 import os
-import json
 
 #This is the auth secret json key for firestore 
 #You can get it from firebase settings
 
 # fireauths for under 45 group
-secret_under_45 = json.loads(os.environ.get('FIREBASE_UNDER_45'))
+secret_under_45 = {
+  "project_id": os.environ.get('UNDER45_PROJECT_ID'),
+  "private_key": os.environ.get('PRIVATE_KEY_UNDER45').replace('\\n', '\n')
+  "client_email": os.environ.get('CLIENT_EMAIL_UNDER45')
+}
 
 # fireauths for above 45 group
-secret_above_45 = json.loads(os.environ.get('FIREBASE_ABOVE_45'))
+secret_above_45 = {
+  "project_id": os.environ.get('ABOVE45_PROJECT_ID'),
+  "private_key": os.environ.get('PRIVATE_KEY_ABOVE45'),
+  "client_email": os.environ.get('CLIENT_EMAIL_ABOVE45')
+}
 
 
 #Token of telegram bot got from bot father
