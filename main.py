@@ -1,8 +1,9 @@
-import notify
+import bot
 from settings import app_secrets
 import time
 import datetime as dt
 import os
+import notify
 
 def isNowInTimePeriod(startTime, endTime, nowTime): 
     if startTime < endTime: 
@@ -13,7 +14,7 @@ def isNowInTimePeriod(startTime, endTime, nowTime):
 
 
 
-notify.bot.send_message(app_secrets.Group_Owner , "Started...")
+bot.bot.send_message(app_secrets.Group_Owner , "Started...")
 print("Started...")
 print(dt.datetime.now().time())
 num = 0
@@ -23,12 +24,12 @@ while True:
 			notify.RUN()
 			print(num)
 			num+=1
-			time.sleep(int(os.environ.get('time')))
+			time.sleep(int(os.environ.get('SLEEP_TIME')))
 		except Exception as e:
 			if "Max retries exceeded with url:" not in str(e):
 				try:
-					notify.bot.send_message(app_secrets.Group_Owner , "Error!!!")
-					notify.bot.send_message(app_secrets.Group_Owner , e)
+					bot.bot.send_message(app_secrets.Group_Owner , "Error!!!")
+					bot.bot.send_message(app_secrets.Group_Owner , e)
 				except:
 					print("............\n")
 					print(e , end = "\n")

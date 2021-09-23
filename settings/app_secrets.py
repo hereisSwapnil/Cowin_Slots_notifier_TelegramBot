@@ -1,22 +1,26 @@
+#It will be used for reading secret vars from the os
 import os
+import json
 
-secret = {
-  "type": os.environ.get('type'),
-  "project_id": os.environ.get('project_id'),
-  "private_key_id": os.environ.get('private_key_id'),
-  "private_key": os.environ.get('private_key').replace('\\n', '\n'),
-  "client_email": os.environ.get('client_email'),
-  "client_id": os.environ.get('client_id'),
-  "auth_uri": os.environ.get('auth_uri'),
-  "token_uri": os.environ.get('token_uri'),
-  "auth_provider_x509_cert_url": os.environ.get('as1'),
-  "client_x509_cert_url": os.environ.get('as2')
-}
+#This is the auth secret json key for firestore 
+#You can get it from firebase settings
+
+# fireauths for under 45 group
+secret_under_45 = json.loads(os.environ.get('FIREBASE_UNDER_45'))
+
+# fireauths for above 45 group
+secret_above_45 = json.loads(os.environ.get('FIREBASE_ABOVE_45'))
 
 
-token = os.environ.get("TELEGRAM_BOT_TOKEN")
-Group_Owner = os.environ.get('group_owner')
-_18plus_groupid = os.environ.get('telegram_groupid_18')
-_45plus_groupid = os.environ.get('telegram_groupid_45')
-DISTRICT_CODE = os.environ.get('district_code')
+#Token of telegram bot got from bot father
+token = str(os.environ.get('BOT_TOKEN'))
+#Username of the owner/manager who will recieve message if any issue occurred in the bot
+Group_Owner = int(os.environ.get('GROUP_OWNER_ID'))
+#Group ID of 18 Plus group
+_18plus_groupid = int(os.environ.get('18PLUS_GROUP_ID'))
+#Group ID of 45 Plus group
+_45plus_groupid = int(os.environ.get('45PLUS_GROUP_ID'))
+#District code as in cowin api
+#You can find District code from the https://apisetu.gov.in/
+DISTRICT_CODE = int(os.environ.get('DISTRICT_CODE'))
 

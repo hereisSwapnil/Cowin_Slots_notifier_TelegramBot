@@ -1,7 +1,10 @@
 import requests
 import datetime
 import jsons
+import bot
+from settings import app_secrets
 
+# This function get the date according to this means temedelta
 def get_date(this):
 	global date_got
 	x = datetime.date.today()+ datetime.timedelta(days = this) 
@@ -12,7 +15,7 @@ def get_date(this):
 	date_got = str("-".join(y))
 	return date_got
 
-
+# This request is for fiding out session on a particular date
 def request_one(RequestDate):
 	global list_sessions
 	url1 = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=664&date="
@@ -58,7 +61,7 @@ def request_one(RequestDate):
 			if tot_dose != 0:
 				list_sessions.append(lst)
 
-
+#This request shows the the whole week slots of a particular district
 def request_two(RequestDate):
 	global list_sessions
 	url1 = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=664&date="
@@ -108,7 +111,7 @@ def request_two(RequestDate):
 
 
 # ///////////////////////////////////////////////////////////////
-
+# If you run this request.py then only the available slots in the present time will be printed
 if __name__ == "__main__":
 	request_one(get_date(0))
 	for i in list_sessions:

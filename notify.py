@@ -1,49 +1,16 @@
-import telebot
-import firebase_admin
-from firebase_admin import credentials , firestore
-from telebot import types
-from settings import app_secrets
+import bot
+import personal
 import request
 import os
 
-# /////////////////////////////////////////////////////
-
-cred = credentials.Certificate(app_secrets.secret)
-firebase_admin.initialize_app(cred)
-db = firestore.client()
-bot = telebot.TeleBot(token = app_secrets.token)
-
-# /////////////////////////////////////////////////////
- 
-# BUTTONS.........................
-
-markup = types.InlineKeyboardMarkup()
-btn = types.InlineKeyboardButton('BOOK NOW', url = "https://selfregistration.cowin.gov.in/")
-markup.add(btn)
-
-# ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-Personal_Notify_Ids = [12345]
-
-PERSONAL_SEND_AGE = 18
-
-PERSONAL_SEND_DATE = ["dd/mm/yyyy"]
-
-PERSONAL_SEND_VACCINE = "COVAXIN/COVISHIELD"
-
-PERSONAL_RUN = False
-
-# ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-def personal_notify(vaccine , date , text , age):
-	if vaccine == PERSONAL_SEND_VACCINE and date in PERSONAL_SEND_DATE and age == PERSONAL_SEND_AGE:
-		for i in Personal_Notify_Ids:
-			bot.send_message( i , text ,parse_mode ="Markdown",reply_markup = markup)
-
-# /////////////////////////////////////////////////////
-
 SEND_18PLUS_group = True
 SEND_45PLUS_group = True
+
+minimum_doses_under_18 = int(os.environ.get('MIN_DOSES_FOR_18PLUS'))
+minimum_doses_above_45 = int(os.environ.get('MIN_DOSES_FOR_45PLUS'))
+number_of_days_check_18 = int(os.environ.get('DAYS_TO_CHECK_FOR_18PLUS'))
+number_of_days_check_45 = int(os.environ.get('DAYS_TO_CHECK_FOR_45PLUS'))
+
 
 def text_18_one(this):
 	global t18_text
@@ -124,13 +91,6 @@ def text_45_two(this):
 				l.append(i[5])
 				t45_text.append(l)
 
-# /////////////////////////////////////////////////////
-
-minimum_doses_under_18 = int(os.environ.get('under18'))
-minimum_doses_above_45 = int(os.environ.get('under45'))
-number_of_days_check_18 = int(os.environ.get('under18_days'))
-number_of_days_check_45 = int(os.environ.get('under45_days'))
-
 def send_18_one():
 	for this in range(number_of_days_check_18):
 		text_18_one(this)
@@ -138,7 +98,7 @@ def send_18_one():
 			try:
 				if (i[2] > minimum_doses_under_18):
 					doc_name = str(i[1]) + str(i[4]) + str(i[3])
-					doc = db.collection("18plus").document(doc_name)
+					doc = bot.db_under45.collection("18plus").document(doc_name)
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
@@ -147,21 +107,21 @@ def send_18_one():
 					a.update(b)
 					doc.set(a)
 					if SEND_18PLUS_group:
-						bot.send_message( app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.bot.send_message( bot.app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = bot.markup)
 					# print(i[0])
-					if PERSONAL_RUN:
-						personal_notify(i[4] , i[3] , i[0] , i[5])
+					if personal.PERSONAL_RUN:
+						personal.personal_notify(i[4] , i[3] , i[0] , i[5])
 
 			except:
 				if i[2]>minimum_doses_under_18:
 					doc_name = str(i[1]) + str(i[4]) + str(i[3])
-					doc = db.collection("18plus").document(doc_name)
+					doc = bot.db_under45.collection("18plus").document(doc_name)
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_18PLUS_group:
-						bot.send_message( app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.bot.send_message( bot.app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = bot.markup)
 					# print(i[0])
-					if PERSONAL_RUN:
-						personal_notify(i[4] , i[3] , i[0], i[5])
+					if personal.PERSONAL_RUN:
+						personal.personal_notify(i[4] , i[3] , i[0], i[5])
 
 def send_18_two():
 	for this in range(number_of_days_check_18):
@@ -170,30 +130,30 @@ def send_18_two():
 			try:
 				if (i[2] > minimum_doses_under_18):
 					doc_name = str(i[1]) + str(i[4]) + str(i[3])
-					doc = db.collection("18plus").document(doc_name)
+					doc = bot.db_under45.collection("18plus").document(doc_name)
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
-				if (c+10 < i[2]) and (i[2] > min_num):
+				if (c+10 < i[2]) and (i[2] > minimum_doses_under_18):
 					b = {"total_dose": i[2]}
 					a.update(b)
 					doc.set(a)
 					if SEND_18PLUS_group:
-						bot.send_message( app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.bot.send_message( bot.app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = bot.markup)
 					# print(i[0])
-					if PERSONAL_RUN:
-						personal_notify(i[4] , i[3] , i[0], i[5])
+					if personal.PERSONAL_RUN:
+						personal.personal_notify(i[4] , i[3] , i[0], i[5])
 
 			except:
 				if i[2]>minimum_doses_under_18:
 					doc_name = str(i[1]) + str(i[4]) + str(i[3])
-					doc = db.collection("18plus").document(doc_name)
+					doc = bot.db_under45.collection("18plus").document(doc_name)
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_18PLUS_group:
-						bot.send_message( app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.bot.send_message( bot.app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = bot.markup)
 					# print(i[0])
-					if PERSONAL_RUN:
-						personal_notify(i[4] , i[3] , i[0], i[5])
+					if personal.PERSONAL_RUN:
+						personal.personal_notify(i[4] , i[3] , i[0], i[5])
 
 def send_45_one():
 	for this in range(number_of_days_check_45):
@@ -202,7 +162,7 @@ def send_45_one():
 			try:
 				if (i[2] > minimum_doses_above_45):
 					doc_name = str(i[1]) + str(i[4]) + str(i[3])
-					doc = db.collection("45plus").document(doc_name)
+					doc = bot.db_above45.collection("45plus").document(doc_name)
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
@@ -211,21 +171,21 @@ def send_45_one():
 					a.update(b)
 					doc.set(a)
 					if SEND_45PLUS_group:
-						bot.send_message( app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.bot.send_message( bot.app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = bot.markup)
 					# print(i[0])
-					if PERSONAL_RUN:
-						personal_notify(i[4] , i[3] , i[0], i[5])
+					if personal.PERSONAL_RUN:
+						personal.personal_notify(i[4] , i[3] , i[0], i[5])
 
 			except:
 				if i[2]>minimum_doses_above_45:
 					doc_name = str(i[1]) + str(i[4]) + str(i[3])
-					doc = db.collection("45plus").document(doc_name)
+					doc = bot.db_above45.collection("45plus").document(doc_name)
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_45PLUS_group:
-						bot.send_message( app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.bot.send_message( bot.app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = bot.markup)
 					# print(i[0])
-					if PERSONAL_RUN:
-						personal_notify(i[4] , i[3] , i[0], i[5])
+					if personal.PERSONAL_RUN:
+						personal.personal_notify(i[4] , i[3] , i[0], i[5])
 
 def send_45_two():
 	for this in range(number_of_days_check_45):
@@ -234,38 +194,40 @@ def send_45_two():
 			try:
 				if (i[2] > minimum_doses_above_45):
 					doc_name = str(i[1]) + str(i[4]) + str(i[3])
-					doc = db.collection("45plus").document(doc_name)
+					doc = bot.db_above45.collection("45plus").document(doc_name)
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
-				if (c + 10 < i[2]) and (i[2] > min_num):
+				if (c + 10 < i[2]) and (i[2] > minimum_doses_above_45):
 					b = {"total_dose": i[2]}
 					a.update(b)
 					doc.set(a)
 					if SEND_45PLUS_group:
-						bot.send_message( app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.bot.send_message( bot.app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = bot.markup)
 					# print(i[0])
-					if PERSONAL_RUN:
-						personal_notify(i[4] , i[3] , i[0], i[5])
+					if personal.PERSONAL_RUN:
+						personal.personal_notify(i[4] , i[3] , i[0], i[5])
 
 			except:
 				if i[2]>minimum_doses_above_45:
 					doc_name = str(i[1]) + str(i[4]) + str(i[3])
-					doc = db.collection("45plus").document(doc_name)
+					doc = bot.db_above45.collection("45plus").document(doc_name)
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_45PLUS_group:
-						bot.send_message( app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = markup)
+						bot.bot.send_message( bot.app_secrets._45plus_groupid,i[0],parse_mode ="Markdown",reply_markup = bot.markup)
 					# print(i[0])
-					if PERSONAL_RUN:
-						personal_notify(i[4] , i[3] , i[0], i[5])
+					if personal.PERSONAL_RUN:
+						personal.personal_notify(i[4] , i[3] , i[0], i[5])
 
 # /////////////////////////////////////////////////////
 
 def RUN():
-	if (SEND_18PLUS_group) or (PERSONAL_RUN and PERSONAL_SEND_AGE == 18) :
+	if (SEND_18PLUS_group) or (personal.PERSONAL_RUN and personal.PERSONAL_SEND_AGE == 18) :
 		send_18_one()
 		send_18_two()
-	if (SEND_45PLUS_group) or (PERSONAL_RUN and PERSONAL_SEND_AGE == 45) :
+	if (SEND_45PLUS_group) or (personal.PERSONAL_RUN and personal.PERSONAL_SEND_AGE == 45) :
 		send_45_one()
 		send_45_two()
+
+
 
