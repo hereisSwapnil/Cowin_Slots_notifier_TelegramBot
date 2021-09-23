@@ -7,7 +7,7 @@ import os
 # fireauths for under 45 group
 secret_under_45 = {
   "project_id": os.environ.get('UNDER45_PROJECT_ID'),
-  "private_key": os.environ.get('PRIVATE_KEY_UNDER45').replace('\\n', '\n')
+  "private_key": os.environ.get('PRIVATE_KEY_UNDER45').replace('\\n', '\n'),
   "client_email": os.environ.get('CLIENT_EMAIL_UNDER45')
 }
 
