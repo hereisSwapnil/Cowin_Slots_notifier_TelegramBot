@@ -8,7 +8,7 @@ import notify
 import centre_schedule_scrapper
 
 def current_date():
-	now = dt.now()
+	now = datetime.now()
 	dt_string = now.strftime("%d/%m/%Y")
 	return dt_string
 
