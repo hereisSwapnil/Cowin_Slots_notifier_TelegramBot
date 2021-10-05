@@ -50,7 +50,7 @@ while True:
 
 			time.sleep(5)
 
-	if isNowInTimePeriod(dt.time(14,00), dt.time(15,00), dt.datetime.now().time()):
+	if isNowInTimePeriod(dt.time(8,00), dt.time(9,00), dt.datetime.now().time()):
 		try:
 			if run_doc == 0:
 				text = centre_schedule_scrapper.scrape()
