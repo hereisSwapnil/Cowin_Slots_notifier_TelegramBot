@@ -20,8 +20,8 @@ def isNowInTimePeriod(startTime, endTime, nowTime):
         return nowTime >= startTime or nowTime <= endTime 
 
 def send_doc(text):
-	bot.send_document(app_secrets._18plus_groupid, text , caption = "Vaccine Centre Plan List\nYou can contact ANMs incase you want")
-	bot.send_document(app_secrets._45plus_groupid, text , caption = "Vaccine Centre Plan List\nYou can contact ANMs incase you want")
+	bot.bot.send_document(app_secrets._18plus_groupid, text , caption = "Vaccine Centre Plan List\nYou can contact ANMs incase you want")
+	bot.bot.send_document(app_secrets._45plus_groupid, text , caption = "Vaccine Centre Plan List\nYou can contact ANMs incase you want")
 
 
 bot.bot.send_message(app_secrets.Group_Owner , "Started...")
