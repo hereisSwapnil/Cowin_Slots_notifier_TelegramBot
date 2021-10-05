@@ -2,6 +2,7 @@ import bot
 from settings import app_secrets
 import time
 import datetime as dt
+from datetime import datetime
 import os
 import notify
 import centre_schedule_scrapper
