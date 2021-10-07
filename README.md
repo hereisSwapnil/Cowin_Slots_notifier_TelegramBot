@@ -1,41 +1,63 @@
-# Cowin_Slots_notifier_TelegramBot
-This Telegram bot looks for available slots in the preferred district and send you a message on configured Telegram group.
-Running on an Indian Server is must.<br/>
-<br/>
-**Update app_secrets.py file**<br/>
-```javascript
-{
-  "type": "TYPE_OF_ACCOUNT",
-  "project_id": "PROJECT_NAME",
-  "private_key_id": "PRIVATE_ID",
-  "private_key": "PRIVATE_KEY",
-  "client_email": "FIREBASE_CLIENT_EMAIL",
-  "client_id": "CLIENT_ID",
-  "auth_uri": "AUTH",
-  "token_uri": "TOKEN",
-  "auth_provider_x509_cert_url": "AUTH_PROVIDER",
-  "client_x509_cert_url": "CLIENT_URL"
-}
 
-cred = credentials.Certificate("secrets.json")
-token = "TELEGRAM_BOT_TOKEN"
-Group_Owner = "ID_OF_OWNER"
-Telegram_Groupid = "TELEGRAM_GROUP_ID"
-DISTRICT_CODE = "CODE_OF YOUR DISTRICT"
-```
-**Get State Code**
-```javascript
-https://cdn-api.co-vin.in/api/v2/admin/location/states
-```
-<br/>
+# Covid Vaccine Slot Notifier On Telegram
 
-**Get District Code**
-```javascript
-https://cdn-api.co-vin.in/api/v2/admin/location/districts/{State_id}
-```
-<br/>
+This Bot can be added to different groups and configured with admin access and code data changes to send vaccine slot notifications
 
-**RUN**
-```javascript
-python main.py
-```
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables
+
+These will be available on the firebase settings
+
+`UNDER45_PROJECT_ID`
+`PRIVATE_KEY_UNDER45`
+`CLIENT_EMAIL_UNDER45`
+`U1`
+`U2`
+`U3`
+`U4`
+`U5`
+`ABOVE45_PROJECT_ID`
+`PRIVATE_KEY_ABOVE45`
+`CLIENT_EMAIL_ABOVE45`
+`A1`
+`A2`
+`A3`
+`A4`
+`A5`
+
+These you can get from the BotFather Telegram
+
+`BOT_TOKEN`
+`GROUP_OWNER_ID`
+`18PLUS_GROUP_ID`
+`45PLUS_GROUP_ID`
+
+This district code can be found using the setu api for cowin
+
+`DISTRICT_CODE`
+
+## Installation
+
+For Installation follow the following steps
+
+`1. Clone the repository`
+
+`2. cd Cowin_Slots_notifier_TelegramBot`
+
+`3. pip install -r requirements.txt`
+
+`4. Add the environment variables required as above`
+
+`5. python main.py`
+
+This will allow the bot to send messages when a slot is available in the city
+
+Note: Vaccine Centre Plan document will only be sent if disctict is of Kanpur Nagar only.
+    
+## Screenshots
+
+[![11.png](https://i.postimg.cc/x1tBydpC/11.png)](https://postimg.cc/bZS6qqhc)
+
+[![12.png](https://i.postimg.cc/pXP0GHFn/12.png)](https://postimg.cc/vDSLTCXQ)
