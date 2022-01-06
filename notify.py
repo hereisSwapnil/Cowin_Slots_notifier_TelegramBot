@@ -18,7 +18,7 @@ def text_18_one(this):
 	request.request_one(request.get_date(this))
 	t18_text = []
 	for i in request.list_sessions:
-			if i[5] == 18:
+			if i[5] == 18 or i[5] == 15:
 				l = []
 				text = f'Centre : *{i[0]}*\nAddress : {i[1]}\nPincode : *{i[9]}*\nDate : *{i[3]}*\n*Dose1* : {i[6]}\n*Dose2* : {i[7]}\nFee : *{i[2]}*\nMinAge : *{i[5]}*\nVaccine : *{i[4]}*'
 				l.append(text)
@@ -36,7 +36,7 @@ def text_18_two(this):
 	request.request_two(request.get_date(this))
 	t18_text = []
 	for i in request.list_sessions:
-			if i[5] == 18:
+			if i[5] == 18 or i[5] == 15:
 				l = []
 				text = f'Centre : *{i[0]}*\nAddress : {i[1]}\nPincode : *{i[9]}*\nDate : *{i[3]}*\n*Dose1* : {i[6]}\n*Dose2* : {i[7]}\nFee : *{i[2]}*\nMinAge : *{i[5]}*\nVaccine : *{i[4]}*'
 				l.append(text)
@@ -98,7 +98,10 @@ def send_18_one():
 			try:
 				if (i[2] > minimum_doses_under_18):
 					doc_name = str(i[1]) + str(i[4]) + str(i[3])
-					doc = bot.db_under45.collection("18plus").document(doc_name)
+					if i[5] == 18:
+						doc = bot.db_under45.collection("18plus").document(doc_name)
+					elif i[5] == 15:
+						doc = bot.db_under45.collection("15plus").document(doc_name)
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
@@ -115,7 +118,10 @@ def send_18_one():
 			except:
 				if i[2]>minimum_doses_under_18:
 					doc_name = str(i[1]) + str(i[4]) + str(i[3])
-					doc = bot.db_under45.collection("18plus").document(doc_name)
+					if i[5] == 18:
+						doc = bot.db_under45.collection("18plus").document(doc_name)
+					elif i[5] == 15:
+						doc = bot.db_under45.collection("15plus").document(doc_name)
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_18PLUS_group:
 						bot.bot.send_message( bot.app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = bot.markup)
@@ -130,7 +136,10 @@ def send_18_two():
 			try:
 				if (i[2] > minimum_doses_under_18):
 					doc_name = str(i[1]) + str(i[4]) + str(i[3])
-					doc = bot.db_under45.collection("18plus").document(doc_name)
+					if i[5] == 18:
+						doc = bot.db_under45.collection("18plus").document(doc_name)
+					elif i[5] == 15:
+						doc = bot.db_under45.collection("15plus").document(doc_name)
 					a = doc.get().to_dict()
 					c = int(a.get("total_dose"))
 					d = str(a.get("date"))
@@ -147,7 +156,10 @@ def send_18_two():
 			except:
 				if i[2]>minimum_doses_under_18:
 					doc_name = str(i[1]) + str(i[4]) + str(i[3])
-					doc = bot.db_under45.collection("18plus").document(doc_name)
+					if i[5] == 18:
+						doc = bot.db_under45.collection("18plus").document(doc_name)
+					elif i[5] == 15:
+						doc = bot.db_under45.collection("15plus").document(doc_name)
 					doc.set({"date" : i[3] , "total_dose" : i[2]})
 					if SEND_18PLUS_group:
 						bot.bot.send_message( bot.app_secrets._18plus_groupid,i[0],parse_mode ="Markdown",reply_markup = bot.markup)

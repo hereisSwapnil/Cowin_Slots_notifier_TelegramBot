@@ -30,7 +30,18 @@ print(dt.datetime.now().time())
 num = 0
 run_doc = 0
 while True:
-	if isNowInTimePeriod(dt.time(8,00), dt.time(22,30), dt.datetime.now().time()):
+	if isNowInTimePeriod(dt.time(8,00), dt.time(9,00), dt.datetime.now().time()):
+		try:
+			if run_doc == 0:
+				text = centre_schedule_scrapper.scrape()
+				if text[1] == current_date():
+					send_doc(text[0])
+					run_doc = 1
+		except Exception as e:
+			bot.bot.send_message(app_secrets.Group_Owner , "Error!!!")
+			bot.bot.send_message(app_secrets.Group_Owner , e)
+
+	if isNowInTimePeriod(dt.time(9,00), dt.time(23,00), dt.datetime.now().time()):
 		try:
 			notify.RUN()
 			print(num)
@@ -49,17 +60,6 @@ while True:
 				print(e , end = "\n")
 
 			time.sleep(5)
-
-	if isNowInTimePeriod(dt.time(8,00), dt.time(9,00), dt.datetime.now().time()):
-		try:
-			if run_doc == 0:
-				text = centre_schedule_scrapper.scrape()
-				if text[1] == current_date():
-					send_doc(text[0])
-					run_doc = 1
-		except Exception as e:
-			bot.bot.send_message(app_secrets.Group_Owner , "Error!!!")
-			bot.bot.send_message(app_secrets.Group_Owner , e)
 
 	if isNowInTimePeriod(dt.time(12,00), dt.time(13,00), dt.datetime.now().time()):
 		run_doc = 0
