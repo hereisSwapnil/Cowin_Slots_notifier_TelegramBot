@@ -58,7 +58,7 @@ Note: Vaccine Centre Plan document will only be sent if disctict is of Kanpur Na
     
 ## Screenshots
 
-[![11.png](https://i.postimg.cc/x1tBydpC/11.png)](https://postimg.cc/bZS6qqhc)
+[![11.png](https://postimg.cc/bZS6qqhc)
 
-[![12.png](https://i.postimg.cc/pXP0GHFn/12.png)](https://postimg.cc/vDSLTCXQ)
+[12.png](https://postimg.cc/KkRBYFnp)
 
